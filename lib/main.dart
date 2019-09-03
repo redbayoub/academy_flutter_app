@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_academy/models/appstate.dart';
-import 'package:my_academy/ui/views/home.dart';
-import 'package:my_academy/ui/views/login.dart';
+import 'package:my_academy/ui/pages/home.dart';
+import 'package:my_academy/ui/pages/login.dart';
+import 'package:my_academy/ui/pages/signup.dart';
+
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -124,6 +126,7 @@ void main() async {
     "/HomePage": (BuildContext context) => new HomePage(),
     //new ScopedModel<AppStateModel>(model: appState, child: new HomePage()),
     "/LoginPage": (BuildContext context) => new LoginPage(),
+    "/SignUpPage": (BuildContext context) => new SignUpPage(),
     //new ScopedModel<AppStateModel>(model: appState, child: new LoginPage()),
   };
 

@@ -12,7 +12,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String _error;
   String _email;
   String _password;
 
@@ -23,12 +22,12 @@ class _LoginPageState extends State<LoginPage> {
 
       print("attemptLogin $_email : $_password");
       final response = await loginApiRequest(_email, _password);
-      if (response['stutus'] == 200) {
+      if (response['status'] == 200) {
         showSucsessSnackbar(_scaffoldKey, "You're Logged in");
 
         var appState = AppStateModel.of(context, true);
         appState.logIn(response);
-        Navigator.pushReplacementNamed(context, '/HomePage');
+        Navigator.pop(context);
       } else {
         print(response);
         showErrorSnackbar(_scaffoldKey, 'Error : ${response['message']}');
@@ -62,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               _buildEmailField(),
               _buildPasswordField(),
-              _buildLoginButton(context)
+              _buildLoginButton(context),
+              _buildDontHaveAccount(context),
             ],
           ),
         ));
@@ -100,6 +100,19 @@ class _LoginPageState extends State<LoginPage> {
     return RaisedButton(
       child: Text("Login"),
       onPressed: () => _attemptLogin(context),
+    );
+  }
+
+  Widget _buildDontHaveAccount(BuildContext context) {
+    return GestureDetector(
+      child: Text(
+        "Don't have an account, sign up for FREE",
+        style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.blue,
+            decorationColor: Colors.blue),
+      ),
+      onTap: () => Navigator.pushReplacementNamed(context, "/SignUpPage"),
     );
   }
 }

@@ -26,5 +26,6 @@ showSimpleSnackbar(GlobalKey<ScaffoldState> scaffoldKey, String text) {
   scaffoldKey.currentState.showSnackBar(SnackBar(
     content: Text(text),
     action: SnackBarAction(label: "Close", onPressed: () => {}),
+    duration: Duration(seconds: 1),
   ));
 }

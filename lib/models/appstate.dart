@@ -52,12 +52,12 @@ class AppStateModel extends Model {
     if (_accessToken != null) {
       _authenticated = true;
       final userInfoResponse = userInfoApiRequest(_accessToken);
-      setUserInfo(userInfoResponse);
+      _setUserInfo(userInfoResponse);
     }
     notifyListeners();
   }
 
-  void setUserInfo(userData) {
+  void _setUserInfo(userData) {
     /* if (data == null) {
       return;
     }
@@ -96,7 +96,7 @@ class AppStateModel extends Model {
     notifyListeners();
   }
 
-  void logIn(data) {
+  void logIn(Map<String, dynamic> data) {
     if (data == null) {
       return;
     }
@@ -104,8 +104,8 @@ class AppStateModel extends Model {
       prefs.setString('accessToken', data['accessToken']);
       _accessToken = data['accessToken'];
       _authenticated = true;
+      _setUserInfo(data['user']);
     }
-    setUserInfo(data['user']);
 
     notifyListeners();
   }
@@ -132,4 +132,18 @@ class AppStateModel extends Model {
 
   static AppStateModel of(BuildContext context, rebuild) =>
       ScopedModel.of<AppStateModel>(context, rebuildOnChange: rebuild);
+
+  void signup(Map<String, dynamic> data) {
+    if (data == null) {
+      return;
+    }
+    if (data.containsKey('accessToken')) {
+      prefs.setString('accessToken', data['accessToken']);
+      _accessToken = data['accessToken'];
+      _authenticated = true;
+      _setUserInfo(data['user']);
+    }
+
+    notifyListeners();
+  }
 }
