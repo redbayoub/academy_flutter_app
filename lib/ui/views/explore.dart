@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_academy/models/appstate.dart';
+import 'package:my_academy/models/course.dart';
+class ExplorePage extends StatefulWidget {
+  @override
+  _ExplorePageState createState() => _ExplorePageState();
+}
 
-class ExplorePage extends StatelessWidget {
+class _ExplorePageState extends State<ExplorePage> {
+  List<Course> _courses;
+
   @override
   Widget build(BuildContext context) {
     var appState = AppStateModel.of(context, true);
@@ -11,7 +18,7 @@ class ExplorePage extends StatelessWidget {
         actions: _buildAppBarBtns(context, appState),
       ),
       body: Center(
-        child: Text("Explore"),
+        child: _buildCoursesList(),
       ),
     );
   }
@@ -30,5 +37,9 @@ class ExplorePage extends StatelessWidget {
       ];
     }
     return [];
+  }
+
+  Widget _buildCoursesList() {
+    return null;
   }
 }
