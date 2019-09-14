@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_academy/models/appstate.dart';
-import 'package:my_academy/ui/views/explore.dart';
+import 'package:my_academy/ui/views/explore/explore.dart';
 import 'package:my_academy/ui/views/my_courses.dart';
 import 'package:my_academy/ui/views/profile.dart';
 

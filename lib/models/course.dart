@@ -19,35 +19,35 @@ class Course {
     this._created_at,
   );
 
-  get id {
+  int get id {
     return _id;
   }
 
-  get field_id {
+  int get field_id {
     return _field_id;
   }
 
-  get teacher_id {
+  int get teacher_id {
     return _field_id;
   }
 
-  get title {
+  String get title {
     return _title;
   }
 
-  get description {
+  String get description {
     return _description;
   }
 
-  get is_approved {
+  bool get is_approved {
     return _is_approved;
   }
 
-  get cover_image {
+  String get cover_image {
     return _cover_image;
   }
 
-  get created_at {
+  DateTime get created_at {
     return _created_at;
   }
 }
@@ -55,12 +55,12 @@ class Course {
 Course courseFromJson(Map<String, dynamic> jsonCourse) {
   return Course(
     jsonCourse["id"],
-    jsonCourse["_field_id"],
-    jsonCourse["_teacher_id"],
-    jsonCourse["_title"],
-    jsonCourse["_description"],
-    jsonCourse["_is_approved"],
-    jsonCourse["_cover_image"],
-    DateTime.parse(jsonCourse["_created_at"]),
+    jsonCourse["field_id"],
+    jsonCourse["teacher_id"],
+    jsonCourse["title"],
+    jsonCourse["description"],
+    jsonCourse["is_approved"] == 1,
+    jsonCourse["cover_image"],
+    DateTime.parse(jsonCourse["created_at"]),
   );
 }

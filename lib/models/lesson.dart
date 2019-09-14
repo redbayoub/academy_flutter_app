@@ -28,11 +28,10 @@ class Lesson {
   int get course_id => _course_id;
 
   int get id => _id;
-
 }
 
-Lesson lessonFromJson(Map<String,dynamic> jsonLesson){
-  return Lesson (
+Lesson lessonFromJson(Map<String, dynamic> jsonLesson) {
+  return Lesson(
     jsonLesson["id"],
     jsonLesson["course_id"],
     jsonLesson["order"],
@@ -40,6 +39,6 @@ Lesson lessonFromJson(Map<String,dynamic> jsonLesson){
     jsonLesson["description"],
     jsonLesson["thumbnail_image"],
     jsonLesson["video_file"],
-    DateTime.parse(jsonLesson["created_at"]),
+    jsonLesson["created_at"],
   );
 }
